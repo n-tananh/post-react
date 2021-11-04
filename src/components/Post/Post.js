@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Card, CardActions, CardContent, Typography} from "@mui/material";
-import {Link, useParams} from "react-router-dom";
+import {Link} from "react-router-dom";
 import './Post.css'
 
 const Post = ({ post } ) => {

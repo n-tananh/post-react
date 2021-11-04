@@ -4,20 +4,19 @@ import {NavLink} from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Logo from '../../assets/images/post_logo.png'
-import {Search} from "@mui/icons-material";
 import SearchIcon from '@mui/icons-material/Search';
 import {alpha, styled} from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
+import logo from '../../assets/images/post_logo.png';
 
 const NavBar = () => {
 
 	const Search = styled('div')(({theme}) => ({
 		position: 'relative',
 		borderRadius: theme.shape.borderRadius,
-		backgroundColor: alpha(theme.palette.common.black, 0.15),
+		backgroundColor: alpha(theme.palette.common.black, 0.1),
 		'&:hover': {
-			backgroundColor: alpha(theme.palette.common.black, 0.25),
+			backgroundColor: alpha(theme.palette.common.black, 0.2),
 		},
 		marginLeft: 0,
 		width: '100%',
@@ -37,8 +36,9 @@ const NavBar = () => {
 		justifyContent: 'center',
 	}));
 
+	// Style for input field
 	const StyledInputBase = styled(InputBase)(({theme}) => ({
-		color: 'black',
+		color: '#fff',
 		'& .MuiInputBase-input': {
 			padding: theme.spacing(1, 1, 1, 0),
 			// vertical padding + font size from searchIcon
@@ -57,12 +57,15 @@ const NavBar = () => {
 	return (
 		<div className="nav__wrapper">
 			<Box sx={{flexGrow: 1}}>
-				<AppBar position="static" sx={{bgcolor: "transparent"}}>
+				{/*Start nav bar*/}
+				<AppBar position="static" sx={{background: "transparent", boxShadow: "none"}}>
 					<Toolbar sx={{justifyContent: "space-around"}}>
-						{/*Logo*/}
+
+						{/*Start Logo*/}
 						<div className="nav__logo">
-							<img style={{width: 100}} src={Logo} alt="logo"/>
+							<img src={logo} alt="logo"/>
 						</div>
+						{/*End Logo*/}
 
 						{/*Link and Search bar*/}
 						<div className="nav__link">
@@ -71,18 +74,23 @@ const NavBar = () => {
 							<NavLink className="item__link" to="/posts">Posts</NavLink>
 							<NavLink className="item__link" to="/contact">Contact</NavLink>
 
+							{/*Start search field*/}
 							<Search>
 								<SearchIconWrapper>
-									<SearchIcon sx={{color: "black"}}/>
+									<SearchIcon sx={{color: "#fff"}}/>
 								</SearchIconWrapper>
 								<StyledInputBase
 									placeholder="Search…"
 									inputProps={{'aria-label': 'search'}}
 								/>
 							</Search>
+							{/*End search field*/}
 						</div>
+						{/*End Link and Search bar*/}
+
 					</Toolbar>
 				</AppBar>
+				{/*End nav bar*/}
 			</Box>
 		</div>
 	);
