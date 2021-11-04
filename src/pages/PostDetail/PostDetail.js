@@ -3,8 +3,8 @@ import {useParams} from "react-router-dom";
 import axios from "axios";
 import {API_URL} from "../../common/constant";
 
-const PostDetails = () => {
-	let {id} = useParams();
+const PostDetail = () => {
+	const {id} = useParams();
 
 	const [post, setPost] = useState({});
 
@@ -18,9 +18,7 @@ const PostDetails = () => {
 		}).catch(error => {
 			console.log(error)
 		})
-	}, [])
-
-	console.log(post)
+	}, [id])
 
 	return (
 		<div className="details__wrapper">
@@ -35,4 +33,4 @@ const PostDetails = () => {
 	);
 };
 
-export default PostDetails;
+export default PostDetail;

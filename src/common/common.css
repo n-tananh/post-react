@@ -1,0 +1,23 @@
+.btn__link {
+    font-size: 14px;
+    font-weight: 800;
+    padding: 15px 25px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 0;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #fff;
+    background-color: #0a869b !important;
+    border-color: #078ea9 !important;
+    text-decoration: none;
+}
+
+.btn__link:hover {
+    color: #c0b9b9;
+    background-color: #00657b !important;
+    border-color: #00657b !important;
+}
+
+.btn__link:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}

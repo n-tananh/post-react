@@ -1,0 +1,25 @@
+.about__wrapper {
+    font-family: 'Lora', 'Times New Roman', serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 760px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.about__content {
+    max-width: 760px;
+}
+
+.about__content p {
+    font-weight: 400;
+    font-size: 23px;
+    color: #212529;
+    text-align: justify;
+}

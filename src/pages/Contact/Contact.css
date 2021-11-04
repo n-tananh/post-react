@@ -1,0 +1,31 @@
+.contact__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 100px;
+}
+
+.contact__wrapper p {
+    font-family: 'Lora', 'Times New Roman', serif;
+    max-width: 748px;
+    font-weight: 400;
+    font-size: 23px;
+    color: #212529;
+    text-align: justify;
+}
+
+.contact__form {
+    display: flex;
+    flex-direction: column;
+    max-width: 760px;
+}
+
+.contact__form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact.btn__link {
+    margin-right: auto;
+}
