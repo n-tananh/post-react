@@ -1,12 +1,12 @@
 .header__wrapper {
-    position: relative;
-    background-image: url("../../assets/images/bg-index.jpg") ;
-    height: 500px;
+
 }
 
 .banner__wrapper {
-    /*background-image: url("../../assets/images/bg-index.jpg") ;*/
-    /*height: 500px;*/
+    background-image: url("../../assets/images/bg-index.jpg") ;
+    height: 500px;
+    width: 100%;
+    opacity: .8;
 }
 
 /*.banner__overlay {*/

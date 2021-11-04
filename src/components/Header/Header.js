@@ -7,7 +7,7 @@ const Header = () => {
 		<div className="header__wrapper">
 			<NavBar/>
 			<div className="banner__wrapper"/>
-			<div className="banner__overlay"/>
+			{/*<div className="banner__overlay"/>*/}
 		</div>
 	);
 };
