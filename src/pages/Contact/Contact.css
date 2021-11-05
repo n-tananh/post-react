@@ -4,11 +4,15 @@
     justify-content: center;
     flex-direction: column;
     margin-bottom: 100px;
+    font-family: 'Lora', 'Times New Roman', serif;
+    width: 100%;
 }
 
-.contact__wrapper p {
-    font-family: 'Lora', 'Times New Roman', serif;
-    max-width: 748px;
+.contact__content {
+    max-width: 760px;
+}
+
+.contact__content p {
     font-weight: 400;
     font-size: 23px;
     color: #212529;
@@ -28,4 +32,5 @@
 
 .contact.btn__link {
     margin-right: auto;
+    margin-top: 50px;
 }
