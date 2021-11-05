@@ -1,26 +1,21 @@
-import React, {useEffect, useState} from 'react';
-import axios from "axios";
+import React from 'react';
 import PostList from "../../components/PostList/PostList";
 import './Home.css'
 import {API_URL} from '../../common/constant'
 import {NavLink} from "react-router-dom";
 import '../../common/common.css'
+import Loading from "../../components/Loading/Loading";
+import useFetch from "../../hooks/useFetch/useFetch";
+
+
+const convertDataResponse = response => response.data;
 
 const Home = () => {
-	const [posts, setPosts] = useState([]);
+	const {isLoading, data, errorMessage} = useFetch([], API_URL.GET_POSTS, convertDataResponse);
+	const posts = data;
 
-	// TODO refactor call api here
-	useEffect(() => {
-		axios({
-			method: 'GET',
-			url: API_URL.GET_POSTS
-		}).then(response => { // model for response
-			setPosts(response.data)
-		}).catch(error => {
-			console.log(error)
-		})
-
-	}, [])
+	if (isLoading) return <Loading type="bars" color="#333"/>;
+	if (errorMessage) return errorMessage;
 
 	return (
 		<div className="home__wrapper">

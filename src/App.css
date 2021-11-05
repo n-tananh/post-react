@@ -1,5 +1,4 @@
 * {
-
     box-sizing: border-box;
 }
 
@@ -10,8 +9,3 @@
     justify-content: center;
 }
 
-
-.app__wrapper ul {
-    display: flex;
-    justify-content: space-evenly;
-}

@@ -9,9 +9,9 @@ const Post = ({ post } ) => {
 
 	return (
 		<div className="card__wrapper">
-			<Card sx={{ maxWidth: 760 }}>
-				<CardContent>
-					<Link className="card__details_link" to={"/posts/" + post.id}>
+			<Card sx={{ maxWidth: 760, boxShadow: "none", border: "none", borderBottom: "1px solid rgba(0,0,0,.1)", marginTop: "30px" }}>
+				<CardContent sx={{padding: 0}}>
+					<Link className="card__details_link" to={`/details/${post.id}`}>
 						<Typography className="card__heading" gutterBottom variant="h5" component="div">
 							{/*{ post.title }*/}
 							Lizards are a widespread group of squamate
@@ -30,8 +30,8 @@ const Post = ({ post } ) => {
 				</CardContent>
 
 				<CardActions className="card__action">
-					<Link className="card__link" to={"/edit/" + post.id}>Edit</Link>
-					<Link className="card__link" to={"/posts/" + post.id}>Details</Link>
+					<Link className="card__link" to={`/edit/${post.id}`}>Edit</Link>
+					<Link className="card__link" to={`/details/${post.id}`}>Details</Link>
 				</CardActions>
 			</Card>
 		</div>

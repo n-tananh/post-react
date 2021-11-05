@@ -8,6 +8,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import {alpha, styled} from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import logo from '../../assets/images/post_logo.png';
+import {PAGE_URL} from "../../common/constant";
 
 const Search = styled('div')(({theme}) => ({
 	position: 'relative',
@@ -53,6 +54,19 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
 }));
 
 const NavBar = () => {
+
+	const linkList = PAGE_URL.map(({URL, NAME}) =>
+		<NavLink
+			key={URL}
+			activeStyle={{ color: 'rgba(255, 255, 255, .7)'}}
+			className="item__link"
+			to={ URL }
+			exact={true}
+		>
+			{ NAME }
+		</NavLink>
+	);
+
 	return (
 		<div className="nav__wrapper">
 			<Box sx={{flexGrow: 1}}>
@@ -69,11 +83,7 @@ const NavBar = () => {
 
 						{/*Link and Search bar*/}
 						<div className="nav__link">
-							<NavLink className="item__link" to="/">Home</NavLink>
-							<NavLink className="item__link" to="/about">About</NavLink>
-							<NavLink className="item__link" to="/posts">Posts</NavLink>
-							<NavLink className="item__link" to="/contact">Contact</NavLink>
-
+							{ linkList }
 							{/*Start search field*/}
 							<Search>
 								<SearchIconWrapper>

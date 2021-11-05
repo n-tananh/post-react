@@ -1,24 +1,21 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {useParams} from "react-router-dom";
-import axios from "axios";
 import {API_URL} from "../../common/constant";
+import useFetch from "../../hooks/useFetch/useFetch";
+import Loading from "../../components/Loading/Loading";
 
+const convertResponseToData = res => res.data;
+
+// TODO implement post detail
 const PostDetail = () => {
 	const {id} = useParams();
 
-	const [post, setPost] = useState({});
+	const {isLoading, data, errorMessage} = useFetch({}, `${API_URL.GET_POSTS_BY_ID}/${id}`, convertResponseToData);
+	const post = data;
 
-	// call api here to get post details
-	useEffect(() => {
-		axios({
-			method: 'GET',
-			url: API_URL.GET_POSTS_BY_ID + id
-		}).then(response => { // model for response
-			setPost(response.data)
-		}).catch(error => {
-			console.log(error)
-		})
-	}, [id])
+	if (isLoading) return <Loading type="bars"/>
+
+	if (errorMessage) return errorMessage;
 
 	return (
 		<div className="details__wrapper">

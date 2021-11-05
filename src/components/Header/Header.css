@@ -4,7 +4,7 @@
 }
 
 .banner__wrapper {
-    background: url("../../assets/images/bg-index.jpg") no-repeat center center;
+    background: no-repeat center center;
     background-size: cover;
     height: 525px;
     width: 100%;

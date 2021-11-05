@@ -12,7 +12,7 @@
     max-width: 760px;
 }
 
-.contact__content p {
+.contact__title {
     font-weight: 400;
     font-size: 23px;
     color: #212529;
@@ -33,4 +33,13 @@
 .contact.btn__link {
     margin-right: auto;
     margin-top: 50px;
+}
+
+.form_error {
+    color: #bf1650;
+}
+
+.form_error::before {
+    display: inline;
+    content: "⚠ ";
 }
