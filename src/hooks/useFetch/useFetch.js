@@ -16,13 +16,13 @@ const useFetch = ( initialData, url, convertResponseToData ) => {
 			url: url
 		}).then(res => {
 			if(!didCancel) {
-				setIsLoading(false);
 				setData(convertResponseToData(res))
+				setIsLoading(false);
 			}
 		}).catch(err => {
 			if (!didCancel) {
-				setIsLoading(false);
 				setErrorMessage(err.message)
+				setIsLoading(false);
 			}
 		});
 

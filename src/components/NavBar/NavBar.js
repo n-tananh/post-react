@@ -4,13 +4,13 @@ import {Link, NavLink} from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import SearchIcon from '@mui/icons-material/Search';
-import {alpha, styled} from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
 import logo from '../../assets/images/post_logo.png';
 import {PAGE_URL} from "../../common/constant";
+/*import SearchIcon from '@mui/icons-material/Search';
+import {alpha, styled} from '@mui/material/styles';
+import InputBase from '@mui/material/InputBase';*/
 
-const Search = styled('div')(({theme}) => ({
+/*const Search = styled('div')(({theme}) => ({
 	position: 'relative',
 	borderRadius: theme.shape.borderRadius,
 	backgroundColor: alpha(theme.palette.common.black, 0.1),
@@ -51,7 +51,7 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
 			},
 		},
 	},
-}));
+}));*/
 
 const NavBar = () => {
 
@@ -85,7 +85,7 @@ const NavBar = () => {
 						<div className="nav__link">
 							{ linkList }
 							{/*Start search field*/}
-							<Search>
+							{/*<Search>
 								<SearchIconWrapper>
 									<SearchIcon sx={{color: "#fff"}}/>
 								</SearchIconWrapper>
@@ -93,7 +93,7 @@ const NavBar = () => {
 									placeholder="Search…"
 									inputProps={{'aria-label': 'search'}}
 								/>
-							</Search>
+							</Search>*/}
 							{/*End search field*/}
 						</div>
 						{/*End Link and Search bar*/}

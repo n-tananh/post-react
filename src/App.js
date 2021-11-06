@@ -6,8 +6,8 @@ import About from "./pages/About/About";
 import Posts from "./pages/Posts/Posts";
 import Contact from "./pages/Contact/Contact";
 import PostDetail from "./pages/PostDetail/PostDetail";
-import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import NavBar from "./components/NavBar/NavBar";
 import PostEdit from "./pages/PostEdit/PostEdit";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
 	return (
 		<Router>
 			<div className="app__wrapper">
-				<Header/>
+				<NavBar/>
 				<Switch>
 					<Route path="/" component={Home} exact={true}/>
 					<Route path="/about" component={About} exact={true}/>

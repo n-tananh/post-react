@@ -3,9 +3,8 @@ import {Card, CardActions, CardContent, Typography} from "@mui/material";
 import {Link} from "react-router-dom";
 import './Post.css'
 
-const Post = ({ post } ) => {
-
-	// TODO get real data
+const Post = ({ post }) => {
+	// TODO change to real data
 
 	return (
 		<div className="card__wrapper">
@@ -29,10 +28,10 @@ const Post = ({ post } ) => {
 
 				</CardContent>
 
-				<CardActions className="card__action">
+				{/*<CardActions className="card__action">
 					<Link className="card__link" to={`/edit/${post.id}`}>Edit</Link>
 					<Link className="card__link" to={`/details/${post.id}`}>Details</Link>
-				</CardActions>
+				</CardActions>*/}
 			</Card>
 		</div>
 	);
