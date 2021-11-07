@@ -1,6 +1,6 @@
 import React from 'react';
 import './Contact.css'
-import '../../common/common.css'
+import '../../assets/styles/common.css'
 import {useForm} from "react-hook-form";
 import {TextField} from "@mui/material";
 import {PATTERN} from "../../common/constant";

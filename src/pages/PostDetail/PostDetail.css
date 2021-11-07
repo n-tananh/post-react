@@ -11,8 +11,10 @@
     flex-direction: column;
     font-size: 20px;
     color: #212529;
-    max-width: 760px;
+    max-width: 100%;
+    word-wrap: break-word;
 }
+
 .navigate {
     display: flex;
     align-items: center;
@@ -25,3 +27,45 @@
 .details__next {
     margin-left: auto;
 }
+
+/**
+ * Posts details
+ */
+.details__content {
+    margin-bottom: 30px;
+}
+
+.details__content h2 {
+    font-size: 32px;
+}
+
+@media screen and (max-width: 800px) {
+    .container {
+        max-width: 100%;
+    }
+
+    .details__content h2 {
+        font-size: 28px;
+    }
+}
+
+.details__content h3 {
+    font-size: 26px;
+}
+
+@media screen and (max-width: 800px) {
+    .details__content h3 {
+        font-size: 22px;
+    }
+}
+
+.details__content h4 {
+    font-size: 20px;
+}
+
+@media screen and (max-width: 800px) {
+    .details__content h4 {
+        font-size: 18px;
+    }
+}
+

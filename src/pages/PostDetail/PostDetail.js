@@ -1,13 +1,13 @@
 import React from 'react';
 import './PostDetail.css'
-import '../../common/custom.css'
+import '../../assets/styles/custom.css'
+import '../../assets/styles/syntaxHighlight.css'
 import Header from "../../components/Header/Header";
 import Loading from "../../components/Loading/Loading";
 import useFetch from "../../hooks/useFetch/useFetch";
 import HEADER_DATA from "../../common/headerConstant";
 import {NavLink, useParams} from "react-router-dom";
 import {API_URL} from "../../common/constant";
-
 import {mockPost} from "../../mockPost"; // get mock data to test view post details
 
 const convertResponseToData = res => res.data;

@@ -3,7 +3,7 @@ import PostList from "../../components/PostList/PostList";
 import './Home.css'
 import {API_URL} from '../../common/constant'
 import {NavLink} from "react-router-dom";
-import '../../common/common.css'
+import '../../assets/styles/common.css'
 import Loading from "../../components/Loading/Loading";
 import useFetch from "../../hooks/useFetch/useFetch";
 import Header from "../../components/Header/Header";
