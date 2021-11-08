@@ -14,21 +14,8 @@ const convertDataResponse = response => response.data;
 const {heading, subheading, backgroundUrl} = HEADER_DATA.home;
 
 const Home = () => {
-	const {isLoading, data, errorMessage} = useFetch([], API_URL.GET_POSTS, convertDataResponse);
-	const posts = data;
 
-	if (errorMessage) console.log(errorMessage);
-
-	if (isLoading) return (
-		<React.Fragment>
-			<Header
-				heading={heading}
-				subheading={subheading}
-				backgroundUrl={backgroundUrl}
-			/>
-			<Loading type="bars"/>
-		</React.Fragment>
-	)
+	const {isLoading, data: posts, errorMessage} = useFetch([], API_URL.GET_POSTS, convertDataResponse);
 
 	return (
 		<React.Fragment>
@@ -37,12 +24,16 @@ const Home = () => {
 				subheading={subheading}
 				backgroundUrl={backgroundUrl}
 			/>
-			<div className="home__wrapper">
-				<div className="home__content">
-					<PostList posts={posts}/>
-					<NavLink to="/posts" className="home btn__link">View All Posts →</NavLink>
+			{isLoading && <Loading type="bars"/>}
+			{errorMessage && errorMessage}
+			{posts && (
+				<div className="home__wrapper">
+					<div className="home__content">
+						<PostList posts={posts}/>
+						<NavLink to="/posts" className="home btn__link">View All Posts →</NavLink>
+					</div>
 				</div>
-			</div>
+			)}
 		</React.Fragment>
 	);
 };

@@ -1,7 +1,8 @@
 import React from 'react';
-import {Card, CardActions, CardContent, Typography} from "@mui/material";
+import {Card, CardContent, Typography} from "@mui/material";
 import {Link} from "react-router-dom";
 import './Post.css'
+// import { CardActions} from "@mui/material"; for action
 
 const Post = ({ post }) => {
 	// TODO change to real data

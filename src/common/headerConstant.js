@@ -6,10 +6,9 @@ import bgContact from '../assets/images/bg-contact.jpg'
 const HEADER_DATA = {
 	home: {
 		heading: "Ocean Nguyen",
-		subheading: "Engineer/Video Creator",
+		subheading: "Engineer / Video Creator",
 		backgroundUrl: bgHome
 	},
-
 	about: {
 		heading: "About Me",
 		subheading: "This is what I do.",

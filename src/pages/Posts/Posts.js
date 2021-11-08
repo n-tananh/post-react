@@ -12,20 +12,8 @@ const convertData = res => res.data;
 const {heading, subheading, backgroundUrl} = HEADER_DATA.post;
 
 const Posts = () => {
-	const {isLoading, data, errorMessage} = useFetch([], API_URL.GET_POSTS, convertData);
-	const posts = data;
 
-	if (isLoading) return (
-		<React.Fragment>
-			<Header
-				heading={heading}
-				subheading={subheading}
-				backgroundUrl={backgroundUrl}
-			/>
-			<Loading type="bars"/>
-		</React.Fragment>
-	)
-	if (errorMessage) return errorMessage;
+	const {isLoading, data: posts, errorMessage} = useFetch([], API_URL.GET_POSTS, convertData);
 
 	return (
 		<React.Fragment>
@@ -34,9 +22,14 @@ const Posts = () => {
 				subheading={subheading}
 				backgroundUrl={backgroundUrl}
 			/>
-			<div className="posts__wrapper">
-				<PostList posts={posts}/>
-			</div>
+
+			{isLoading && <Loading type="bars"/>}
+			{errorMessage && errorMessage}
+			{posts && (
+				<div className="posts__wrapper">
+					 <PostList posts={posts}/>
+				</div>
+			)}
 		</React.Fragment>
 	);
 };

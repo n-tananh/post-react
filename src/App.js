@@ -7,8 +7,8 @@ import Posts from "./pages/Posts/Posts";
 import Contact from "./pages/Contact/Contact";
 import PostDetail from "./pages/PostDetail/PostDetail";
 import Footer from "./components/Footer/Footer";
-import NavBar from "./components/NavBar/NavBar";
 import PostEdit from "./pages/PostEdit/PostEdit";
+import NavBar from "./components/NavBar/NavBar";
 
 function App() {
 
@@ -17,12 +17,12 @@ function App() {
 			<div className="app__wrapper">
 				<NavBar/>
 				<Switch>
-					<Route path="/" component={Home} exact={true}/>
-					<Route path="/about" component={About} exact={true}/>
-					<Route path="/posts" component={Posts} exact={true}/>
-					<Route path="/contact" component={Contact} exact={true}/>
-					<Route path="/details/:id" component={PostDetail} exact={true}/>
-					<Route path="/edit/:id" component={PostEdit} exact={true}/>
+					<Route path="/" component={Home} exact/>
+					<Route path="/about" component={About} exact/>
+					<Route path="/posts" component={Posts} exact/>
+					<Route path="/contact" component={Contact} exact/>
+					<Route path="/details/:id" component={PostDetail} exact/>
+					<Route path="/edit/:id" component={PostEdit} exact/>
 				</Switch>
 				<Footer/>
 			</div>

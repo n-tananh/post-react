@@ -2,105 +2,160 @@ import React from 'react';
 import './NavBar.css'
 import {Link, NavLink} from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import logo from '../../assets/images/post_logo.png';
 import {PAGE_URL} from "../../common/constant";
-/*import SearchIcon from '@mui/icons-material/Search';
-import {alpha, styled} from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';*/
+import {makeStyles, useTheme} from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import {Typography} from "@mui/material";
 
-/*const Search = styled('div')(({theme}) => ({
-	position: 'relative',
-	borderRadius: theme.shape.borderRadius,
-	backgroundColor: alpha(theme.palette.common.black, 0.1),
-	'&:hover': {
-		backgroundColor: alpha(theme.palette.common.black, 0.2),
-	},
-	marginLeft: 0,
-	width: '100%',
-	[theme.breakpoints.up('sm')]: {
-		marginLeft: theme.spacing(1),
-		width: 'auto',
-	},
-}));
+const linkList = PAGE_URL.map(({URL, NAME}) =>
+	<NavLink
+		key={URL}
+		activeStyle={{color: 'rgba(255, 255, 255, .7)'}}
+		className="item__link"
+		to={URL}
+		exact={true}
+	>
+		{NAME}
+	</NavLink>
+);
 
-const SearchIconWrapper = styled('div')(({theme}) => ({
-	padding: theme.spacing(0, 2),
-	height: '100%',
-	position: 'absolute',
-	pointerEvents: 'none',
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'center',
-}));
-
-// Style for input field
-const StyledInputBase = styled(InputBase)(({theme}) => ({
-	color: '#fff',
-	'& .MuiInputBase-input': {
-		padding: theme.spacing(1, 1, 1, 0),
-		// vertical padding + font size from searchIcon
-		paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-		transition: theme.transitions.create('width'),
-		width: '100%',
-		[theme.breakpoints.up('sm')]: {
-			width: '12ch',
-			'&:focus': {
-				width: '20ch',
-			},
+const useStyles = makeStyles(theme => ({
+	root: {
+		[theme.breakpoints.down("sm")]: {
+			flexGrow: 1,
+			background: 'white'
 		},
+		position: "absolute",
+		flexGrow: 1,
+		zIndex: 99,
+		top: 0,
+		right: 0,
+		left: 0,
 	},
-}));*/
+
+	menuButton: {
+		marginRight: theme.spacing(2),
+		borderRadius: 2,
+		color: "black",
+		fontSize: 8,
+		border: "1px dashed",
+		borderColor: 'rgba(0,0,0,.5)',
+		padding: 8
+	},
+
+	logo: {
+		flexGrow: 1
+	},
+
+}));
 
 const NavBar = () => {
+	const classes = useStyles();
+	const [anchorEl, setAnchorEl] = React.useState(null);
+	const open = Boolean(anchorEl);
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-	const linkList = PAGE_URL.map(({URL, NAME}) =>
-		<NavLink
-			key={URL}
-			activeStyle={{ color: 'rgba(255, 255, 255, .7)'}}
-			className="item__link"
-			to={ URL }
-			exact={true}
-		>
-			{ NAME }
-		</NavLink>
-	);
+	const handleMenu = event => {
+		setAnchorEl(event.currentTarget);
+	};
+
+	const handleMenuClick = () => {
+		setAnchorEl(null);
+	};
 
 	return (
-		<div className="nav__wrapper">
-			<Box sx={{flexGrow: 1}}>
-				{/*Start nav bar*/}
-				<AppBar position="static" sx={{background: "transparent", boxShadow: "none"}}>
-					<Toolbar sx={{justifyContent: "space-around"}}>
-						{/*Start Logo*/}
-						<div className="nav__logo">
-							<Link to="/">
-								<img src={logo} alt="logo"/>
-							</Link>
-						</div>
-						{/*End Logo*/}
+		<div className={classes.root}>
 
-						{/*Link and Search bar*/}
+			<AppBar position="static" sx={{background: "transparent", boxShadow: "none"}}>
+				<Toolbar sx={{justifyContent: "space-around"}}>
+					<div className={classes.logo}>
+						<Link to="/">
+							<img src={logo} alt="logo"/>
+						</Link>
+					</div>
+
+					{isMobile ? (
+						<>
+							<IconButton
+								edge="start"
+								className={classes.menuButton}
+								color="inherit"
+								aria-label="menu"
+								onClick={handleMenu}
+							>
+								<Typography
+									sx = {{
+										fontSize: 12,
+										fontWeight: 800,
+										color: '#343a40',
+									}}
+								>
+									MENU
+								</Typography>
+								<MenuIcon/>
+							</IconButton>
+							<Menu
+								id="menu-appbar"
+								anchorEl={anchorEl}
+								keepMounted
+								anchorOrigin={{
+									vertical: "top",
+									horizontal: "right"
+								}}
+								transformOrigin={{
+									vertical: "top",
+									horizontal: "right"
+								}}
+								PaperProps={{
+									style: {
+										marginTop: 48,
+										borderRadius: 0,
+										width: '100vw',
+										boxShadow: 'none',
+										left: 0
+									}
+								}}
+								open={open}
+								onClose={() => setAnchorEl(null)}
+							>
+								{PAGE_URL.map(menuItem => {
+									const {URL, NAME} = menuItem;
+									return (
+										<MenuItem
+											key={URL}
+											onClick={() => handleMenuClick(URL)}
+											component={Link}
+											to={URL}
+											style={{
+												color: 'rgba(0,0,0,.6)',
+												fontSize: 12,
+												fontWeight: 800,
+												letterSpacing: 1,
+												textTransform: 'uppercase',
+												paddingLeft: 27
+											}}
+										>
+											{NAME}
+										</MenuItem>
+									);
+								})}
+							</Menu>
+						</>
+					) : (
 						<div className="nav__link">
-							{ linkList }
-							{/*Start search field*/}
-							{/*<Search>
-								<SearchIconWrapper>
-									<SearchIcon sx={{color: "#fff"}}/>
-								</SearchIconWrapper>
-								<StyledInputBase
-									placeholder="Search…"
-									inputProps={{'aria-label': 'search'}}
-								/>
-							</Search>*/}
-							{/*End search field*/}
+							{linkList}
 						</div>
-						{/*End Link and Search bar*/}
-					</Toolbar>
-				</AppBar>
-				{/*End nav bar*/}
-			</Box>
+					)}
+				</Toolbar>
+			</AppBar>
+			{/*End nav bar*/}
 		</div>
 	);
 };
