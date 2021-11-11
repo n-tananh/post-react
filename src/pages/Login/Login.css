@@ -1,0 +1,36 @@
+.login__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    max-width: 760px;
+    align-items: center;
+}
+
+.form__group {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form__label {
+    font-size: 20px;
+}
+
+.form__control {
+    font-size: 15px;
+    max-width: 500px;
+    min-width: 300px;
+    line-height: 30px;
+}
+
+.login__form .btn__link {
+    height: 50px;
+    line-height: 100%;
+    width: 300px;
+}

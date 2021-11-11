@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import axios from "axios";
 
 
-const useFetch = ( initialData, url, convertResponseToData ) => {
+const useFetch = ( initialData, url, convertResponseToData, token ) => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [data, setData] = useState(initialData);
 	const [errorMessage, setErrorMessage] = useState('');
@@ -29,12 +29,12 @@ const useFetch = ( initialData, url, convertResponseToData ) => {
 		return () => {
 			didCancel = true;
 		}
-	}, [convertResponseToData, url]);
+	}, [convertResponseToData, url, token]);
 
 	return {
 		isLoading,
 		data,
-		errorMessage
+		errorMessage,
 	};
 };
 

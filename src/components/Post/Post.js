@@ -1,38 +1,44 @@
 import React from 'react';
-import {Card, CardContent, Typography} from "@mui/material";
+import {Card, CardActions, CardContent, Typography} from "@mui/material";
 import {Link} from "react-router-dom";
 import './Post.css'
-// import { CardActions} from "@mui/material"; for action
+import {Button} from "@material-ui/core";
 
-const Post = ({ post }) => {
-	// TODO change to real data
+const Post = ({post, username, handleDelete}) => {
 
 	return (
 		<div className="card__wrapper">
-			<Card sx={{ maxWidth: 760, boxShadow: "none", border: "none", borderBottom: "1px solid rgba(0,0,0,.1)", marginTop: "30px" }}>
+			<Card sx={{
+				maxWidth: 760,
+				minWidth: 505,
+				boxShadow: "none",
+				border: "none",
+				borderBottom: "1px solid rgba(0,0,0,.1)",
+				marginTop: "30px"
+			}}>
 				<CardContent sx={{padding: 0}}>
 					<Link className="card__details_link" to={`/details/${post.id}`}>
 						<Typography className="card__heading" gutterBottom variant="h5" component="div">
-							{/*{ post.title }*/}
-							Lizards are a widespread group of squamate
+							{post.title}
 						</Typography>
 
 						<Typography className="card__subtitle" variant="h6">
-							{/*{post.subtitle}*/}
-							How to use volumes and bind mounts in Docker.
+							{post.description}
 						</Typography>
 					</Link>
 
 					<Typography className="card__meta" variant="p" color="text.secondary">
-						Posted by Ocean Nguyen on May 20, 2019 · by Tony
+						Posted by Ocean Nguyen on May 20, 2021 · by Tony
 					</Typography>
 
 				</CardContent>
 
-				{/*<CardActions className="card__action">
-					<Link className="card__link" to={`/edit/${post.id}`}>Edit</Link>
-					<Link className="card__link" to={`/details/${post.id}`}>Details</Link>
-				</CardActions>*/}
+				{username ?
+					(<CardActions className="card__action">
+						<Button value={post.id} className="card__link" onClick={handleDelete} to={"/"}>Delete</Button>
+						<Link className="card__link" to={`/edit/${post.id}`}>Edit</Link>
+					</CardActions>) : ""
+				}
 			</Card>
 		</div>
 	);

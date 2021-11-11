@@ -7,7 +7,7 @@ import Loading from "../../components/Loading/Loading";
 import useFetch from "../../hooks/useFetch/useFetch";
 import {NavLink, useParams} from "react-router-dom";
 import {API_URL} from "../../common/constant";
-import {mockPost} from "../../mockPost"; // get mock data to test view post details
+import bgPost from "../../assets/images/posts/02.png"
 
 const convertResponseToData = res => res.data;
 
@@ -20,9 +20,9 @@ const PostDetail = () => {
 	return (
 		<React.Fragment>
 			<Header
-				heading={mockPost.title}
-				subheading={mockPost.description}
-				backgroundUrl={mockPost.background}
+				heading={post.title}
+				subheading={post.description}
+				backgroundUrl={bgPost}
 			/>
 			{isLoading && <Loading type="bars"/>}
 			{errorMessage && errorMessage}
@@ -30,7 +30,7 @@ const PostDetail = () => {
 			{post && (
 				<div className="details__wrapper">
 					<div className="container">
-						<div className="details__content" dangerouslySetInnerHTML={{__html: mockPost.content}}/>
+						<div className="details__content" dangerouslySetInnerHTML={{__html: post.content}}/>
 						<div className="navigate">
 
 							{/*TODO implement prev, next post feature*/}

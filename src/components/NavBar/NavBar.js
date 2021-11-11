@@ -12,6 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import {Typography} from "@mui/material";
+import SearchBar from "../SearchBar/SearchBar";
 
 const linkList = PAGE_URL.map(({URL, NAME}) =>
 	<NavLink
@@ -55,7 +56,7 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-const NavBar = () => {
+const NavBar = ({ username }) => {
 	const classes = useStyles();
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
@@ -83,6 +84,9 @@ const NavBar = () => {
 
 					{isMobile ? (
 						<>
+							<div style={{marginRight: 30}}>
+								<SearchBar/>
+							</div>
 							<IconButton
 								edge="start"
 								className={classes.menuButton}
@@ -146,11 +150,63 @@ const NavBar = () => {
 										</MenuItem>
 									);
 								})}
+								{!username ?
+									<MenuItem
+										key="login"
+										onClick={() => handleMenuClick("/login")}
+										component={Link}
+										to="/login"
+										style={{
+											color: 'rgba(0,0,0,.6)',
+											fontSize: 12,
+											fontWeight: 800,
+											letterSpacing: 1,
+											textTransform: 'uppercase',
+											paddingLeft: 27
+										}}
+									>
+										Login
+									</MenuItem> :
+									<MenuItem
+										key="logout"
+										onClick={() => handleMenuClick("/logout")}
+										component={Link}
+										to="/logout"
+										style={{
+											color: 'rgba(0,0,0,.6)',
+											fontSize: 12,
+											fontWeight: 800,
+											letterSpacing: 1,
+											textTransform: 'uppercase',
+											paddingLeft: 27
+										}}
+									>
+										Logout
+									</MenuItem>}
 							</Menu>
 						</>
 					) : (
 						<div className="nav__link">
 							{linkList}
+							{!username ? <NavLink
+								key="login"
+								activeStyle={{color: 'rgba(255, 255, 255, .7)'}}
+								className="item__link"
+								to="/login"
+								exact={true}
+							>
+								Login
+							</NavLink> :
+								<NavLink
+									key="logout"
+									activeStyle={{color: 'rgba(255, 255, 255, .7)'}}
+									className="item__link"
+									to="/logout"
+									exact={true}
+								>
+									Logout
+								</NavLink>}
+							<SearchBar/>
 						</div>
 					)}
 				</Toolbar>

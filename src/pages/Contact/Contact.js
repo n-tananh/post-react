@@ -12,6 +12,7 @@ const Contact = () => {
 	const { register, formState: { errors }, handleSubmit } = useForm();
 
 	const onSubmit = (values) => {
+		alert(`Send : ${values.message} done`)
 		console.log(values)
 	}
 

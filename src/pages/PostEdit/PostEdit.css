@@ -1,0 +1,26 @@
+.edit__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.edit__form form {
+    display: flex;
+    flex-direction: column;
+    width: 760px;
+}
+
+.form_error {
+    color: #bf1650;
+}
+
+.form_error::before {
+    display: inline;
+    content: "⚠ ";
+}
+
+.edit__form .btn__link {
+    margin-left: auto;
+}

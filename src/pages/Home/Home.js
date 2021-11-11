@@ -9,13 +9,11 @@ import useFetch from "../../hooks/useFetch/useFetch";
 import Header from "../../components/Header/Header";
 import HEADER_DATA from "../../common/headerConstant";
 
-
 const convertDataResponse = response => response.data;
 const {heading, subheading, backgroundUrl} = HEADER_DATA.home;
 
-const Home = () => {
-
-	const {isLoading, data: posts, errorMessage} = useFetch([], API_URL.GET_POSTS, convertDataResponse);
+const Home = ({token, username, handleDelete}) => {
+	const {isLoading, data: posts, errorMessage} = useFetch([], API_URL.GET_POSTS, convertDataResponse, token);
 
 	return (
 		<React.Fragment>
@@ -29,7 +27,7 @@ const Home = () => {
 			{posts && (
 				<div className="home__wrapper">
 					<div className="home__content">
-						<PostList posts={posts}/>
+						<PostList posts={posts} username={username} token={token} handleDelete={handleDelete}/>
 						<NavLink to="/posts" className="home btn__link">View All Posts →</NavLink>
 					</div>
 				</div>

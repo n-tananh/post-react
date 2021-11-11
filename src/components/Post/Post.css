@@ -1,6 +1,7 @@
 .card__wrapper {
     margin-bottom: 20px;
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    min-width: 528px;
 }
 
 .card__details_link {
